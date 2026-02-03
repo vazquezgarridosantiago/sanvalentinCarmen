@@ -100,25 +100,36 @@ button {
     object-fit: cover;      /* llenar el contenedor sin deformarse */
 }
 
-/* 🔹 Ajustes para pantallas pequeñas (<480px) */
+/* 🔹 Ajustes para móviles pequeños (<480px) */
 @media (max-width: 480px) {
     .grid-espera {
-        grid-template-columns: 1fr;  /* 1 columna */
-        grid-template-rows: repeat(4, 200px); /* 4 filas, una para cada imagen */
-        gap: 15px;
+        max-width: 300px; /* reducir el tamaño total de la cuadrícula */
+        gap: 10px;
+    }
+
+    .grid-item {
+        height: 120px;   /* contenedor más pequeño */
     }
 
     .espera-titulo {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+    }
+
+    .boton-espera {
+        font-size: 0.95rem;
+        padding: 6px 12px;
     }
 }
 
-/* 🔹 Ajustes para tablets (481px a 768px) */
+/* Ajustes para tablets (481px - 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
     .grid-espera {
-        grid-template-columns: 1fr 1fr; /* 2 columnas */
-        grid-template-rows: repeat(2, 200px); /* 2 filas */
-        gap: 15px;
+        max-width: 500px; /* cuadrícula un poco más pequeña que desktop */
+        gap: 12px;
+    }
+
+    .grid-item {
+        height: 180px;
     }
 
     .espera-titulo {
