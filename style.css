@@ -62,4 +62,66 @@ button {
         margin-right: 8px;
     }
 }
+/* Título de la página de espera */
+.espera-titulo {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
 
+/* Contenedor de la cuadrícula */
+.grid-espera {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columnas */
+    grid-template-rows: 1fr 1fr;    /* 2 filas */
+    gap: 20px;
+    width: 80%;             /* ocupa el 80% del ancho de la pantalla */
+    max-width: 450px;       /* no se hace demasiado grande */
+    justify-items: center;   /* centrar cada grid item horizontalmente */
+    align-items: center;     /* centrar cada grid item verticalmente */
+}
+
+/* Cada contenedor de imagen */
+.grid-item {
+    width: 100%;          /* ocupar todo el ancho de la columna */
+    aspect-ratio: 1 / 1;  /* cuadrado perfecto */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Imagen dentro del contenedor */
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* llenar el contenedor sin deformarse */
+}
+
+/* 🔹 Ajustes para pantallas pequeñas (<480px) */
+@media (max-width: 480px) {
+    .grid-espera {
+        grid-template-columns: 1fr;  /* 1 columna */
+        grid-template-rows: repeat(4, 200px); /* 4 filas, una para cada imagen */
+        gap: 15px;
+    }
+
+    .espera-titulo {
+        font-size: 1.3rem;
+    }
+}
+
+/* 🔹 Ajustes para tablets (481px a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .grid-espera {
+        grid-template-columns: 1fr 1fr; /* 2 columnas */
+        grid-template-rows: repeat(2, 200px); /* 2 filas */
+        gap: 15px;
+    }
+
+    .espera-titulo {
+        font-size: 1.4rem;
+    }
+}

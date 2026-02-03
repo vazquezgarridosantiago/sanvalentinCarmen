@@ -61,6 +61,7 @@
       emailjs.send('service_fv78nzg', 'template_0677ffh', { message: mensaje })
       .then(function() {
           alert('Respuestas enviadas correctamente!✨');
+          window.location.href = "espera.html";
       }, function(error) {
           alert('Error al enviar el correo: ' + JSON.stringify(error));
       });
