@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+<head>
+    <meta charset="UTF-8">
+    <title>Cuestionario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Unas preguntitas 😌</h1>
+
+<form id="quiz">
+    <p>1️⃣ ¿Quieres cenar en el restaurante Sakai?</p>
+    <label class="option"><input type="radio" name="p1" required> Sí</label><br>
+    <label class="option"><input type="radio" name="p1"> No</label>
+
+    <p>2️⃣ ¿A que hora te gustaría cenar?</p>
+    <label class="option"><input type="radio" name="p2" required> 21:00</label><br>
+    <label class="option"><input type="radio" name="p2"> 21:30</label><br>
+    <label class="option"><input type="radio" name="p2"> La que tu kiera wapo</label>
+
+    <p>3️⃣ ¿Quieres "dormir" conmigo después de la cena 😏?</p>
+    <label class="option"><input type="radio" name="p3" required> Si</label><br>
+    <label class="option" id="nofake">
+        <input type="radio" name="p3"> No
+    </label>
+
+    <br><br>
+    <button type="submit">Enviar</button>
+</form>
+
+<script>
+    document.getElementById("nofake").addEventListener("click", function (e) {
+    e.preventDefault();      // bloquea la selección
+    this.checked = false;    // por si acaso
+    alert("Esa opción no está disponible 😘");
+});
+
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script type="text/javascript">
+  emailjs.init("rekswt2IaSQDkuH8G"); // Pon tu User ID real
+
+  document.getElementById('quiz').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Obtener respuestas seleccionadas
+      var p1 = this.querySelector('input[name="p1"]:checked').nextSibling.textContent.trim();
+      var p2 = this.querySelector('input[name="p2"]:checked').nextSibling.textContent.trim();
+      var p3 = this.querySelector('input[name="p3"]:checked').nextSibling.textContent.trim();
+
+      var mensaje = `
+      Respuesta 1: ${p1}
+      Respuesta 2: ${p2}
+      Respuesta 3: ${p3}
+      `;
+
+      // Enviar correo usando EmailJS
+      emailjs.send('service_fv78nzg', 'template_0677ffh', { message: mensaje })
+      .then(function() {
+          alert('Respuestas enviadas correctamente!✨');
+      }, function(error) {
+          alert('Error al enviar el correo: ' + JSON.stringify(error));
+      });
+  });
+</script>
