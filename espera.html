@@ -16,6 +16,22 @@
     <div class="grid-item"><img src="images/3.jpeg" alt="Foto 3"></div>
     <div class="grid-item"><img src="images/4.jpeg" alt="Foto 4"></div>
 </div>
+<script>
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {  // solo bloquear clic derecho sobre imágenes
+        e.preventDefault();            // bloquea menú contextual
+        alert("No puedes descargar esta imagen 😘"); // mensaje opcional
+    }
+});
+// Bloquear arrastrar imágenes
+document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault(); // evita arrastrar
+    }
+});
+</script>
+
+
 
 </body>
 </html>
